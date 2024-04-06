@@ -1,0 +1,128 @@
+/* static/css/styles.css */
+
+/* Base theme variables */
+:root {
+    --background-color: #ffffff; /* Light mode background */
+    --text-color: #000000; /* Light mode text */
+    --primary-color: #007bff; /* Primary color for light mode */
+    --button-bg-color: #007bff; /* Primary button background color for light mode */
+    --button-text-color: #ffffff; /* Primary button text color for light mode */
+    /* Table styles for light mode */
+    --table-bg-color: #ffffff; /* Light mode table background */
+    --table-text-color: #212529; /* Light mode table text */
+    --table-border-color: #dee2e6; /* Light mode table border */
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+    --background-color: #121212; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text */
+    --primary-color: #0a84ff; /* Primary color for dark mode */
+    --button-bg-color: #0a84ff; /* Primary button background color for dark mode */
+    --button-text-color: #ffffff; /* Primary button text color for dark mode */
+    /* Table styles for dark mode */
+    --table-bg-color: #343a40; /* Dark mode table background */
+    --table-text-color: #f8f9fa; /* Dark mode table text */
+    --table-border-color: #495057; /* Dark mode table border */
+}
+
+/* Applying the variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Styling links and primary buttons */
+a, .btn-primary {
+    color: var(--primary-color);
+}
+
+/* General button styling that applies to all themes */
+.btn {
+    font-weight: bold; /* Makes text within buttons bold */
+}
+
+/* Specific styles for .btn-primary to ensure they use the theme colors */
+.btn-primary {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border-color: var(--button-bg-color);
+}
+
+/* Adjusting .btn-primary on hover to slightly darken the color */
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade for hover in light mode */
+    border-color: #0056b3;
+}
+
+/* Dark theme hover adjustments */
+[data-theme="dark"] .btn-primary:hover {
+    background-color: #0050e0; /* Darker shade for hover in dark mode */
+    border-color: #0050e0;
+}
+
+/* Default light theme styles for the toggle button */
+#theme-toggle {
+    color: #000000; /* Dark text for light background */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ddd; /* Light border */
+}
+
+/* Dark theme styles */
+[data-theme="dark"] #theme-toggle {
+    color: #ffffff; /* Light text for dark background */
+    background-color: #343a40; /* Darker background */
+    border: 1px solid #555; /* Darker border */
+}
+
+/* Leaderboard and Badges Styling */
+.leaderboard-table {
+    background-color: var(--leaderboard-background);
+    box-shadow: var(--box-shadow);
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.leaderboard-table th {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+
+.leaderboard-table td {
+    background-color: var(--table-bg-color);
+    color: var(--table-text-color);
+    border-bottom: 2px solid var(--dark-background-color);
+}
+
+.leaderboard-table tr:hover {
+    background-color: var(--dark-background-color);
+    color: var(--light-text-color);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.badge-icon {
+    background-color: var(--badge-background);
+}
+
+/* New Table Row Hover Effect */
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5; /* Adjust the color to fit your theme, if necessary */
+}
+
+
+/* Applying table variable styles */
+.table {
+    background-color: var(--table-bg-color);
+    color: var(--table-text-color);
+    border-color: var(--table-border-color);
+}
+
+.table th, .table td {
+    border-color: var(--table-border-color);
+}
+
+.table thead th {
+    background-color: var(--table-bg-color);
+    color: var(--table-text-color);
+}
