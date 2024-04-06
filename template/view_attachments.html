@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Attachments</h2>
+
+{% if bug.screenshot_path %}
+    <div>
+        <h4>Screenshot</h4>
+        <img src="{{ url_for('static', filename='uploads/' + bug.screenshot_path) }}" alt="Screenshot" style="max-width: 100%;">
+    </div>
+{% endif %}
+
+{% if bug.screen_recording_path %}
+    <div>
+        <h4>Screen Recording</h4>
+        <video controls src="{{ url_for('static', filename='uploads/' + bug.screen_recording_path) }}" style="max-width: 100%;"></video>
+    </div>
+{% endif %}
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+{% endblock %}

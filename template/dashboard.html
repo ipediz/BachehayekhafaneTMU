@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<a href="{{ url_for('submit_bug') }}" class="btn btn-primary mb-3">Submit New Bug</a>
+<a href="{{ url_for('trend_analysis') }}" class="btn btn-info mb-3">Trend Analysis</a>
+
+<!-- Begin Search Form -->
+<form method="GET" action="{{ url_for('dashboard') }}">
+    {{ search_form.hidden_tag() }}
+    <div class="form-row">
+        <div class="col">
+            {{ search_form.keyword.label }} {{ search_form.keyword(class="form-control") }}
+        </div>
+        <div class="col">
+            {{ search_form.status.label }} {{ search_form.status(class="form-control") }}
+        </div>
+        <div class="col">
+            {{ search_form.severity.label }} {{ search_form.severity(class="form-control") }}
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </div>
+    </div>
+</form>
+<!-- End Search Form -->
+
+<!-- Updated bug display table with hover effect and conditional attachments button -->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bug in bugs %}
+        <tr>
+            <td>{{ bug.title }}</td>
+            <td>{{ bug.description }}</td>
+            <td>{{ bug.status }}</td>
+            <td>
+                <a href="{{ url_for('edit_bug', bug_id=bug.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+                {% if bug.screenshot_path or bug.screen_recording_path %}
+                    <a href="{{ url_for('view_attachments', bug_id=bug.id) }}" class="btn btn-info btn-sm">Attachments</a>
+                {% else %}
+                    <button class="btn btn-info btn-sm" disabled style="cursor: not-allowed;">Attachments</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">No bug reports found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination Links -->
+<nav aria-label="Bug report pages">
+    <ul class="pagination">
+        <!-- Pagination links here -->
+    </ul>
+</nav>
+{% endblock %}

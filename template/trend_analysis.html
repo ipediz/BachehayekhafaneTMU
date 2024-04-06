@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Trend Analysis</h2>
+
+<h3>Severity Analysis</h3>
+<div id="severity-analysis-graph"></div>
+
+<h3>Status Analysis</h3>
+<div id="status-analysis-graph"></div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var graphSeverityData = JSON.parse('{{ graph_severity_json | safe }}');
+    Plotly.newPlot('severity-analysis-graph', graphSeverityData.data, graphSeverityData.layout);
+
+    var graphStatusData = JSON.parse('{{ graph_status_json | safe }}');
+    Plotly.newPlot('status-analysis-graph', graphStatusData.data, graphStatusData.layout);
+</script>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Submit Bug</h2>
+<form action="{{ url_for('submit_bug') }}" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.title.label }}
+        {{ form.title(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label }}
+        {{ form.description(class="form-control") }}
+    </div>
+
+    <!-- Severity field -->
+    <div class="form-group">
+        {{ form.severity.label }} 
+        {{ form.severity(class="form-control") }}
+    </div>
+
+    <!-- Status field -->
+    <div class="form-group">
+        {{ form.status.label }} 
+        {{ form.status(class="form-control") }}
+    </div>
+
+    <!-- Screenshot field -->
+    <div class="form-group">
+        {{ form.screenshot.label }}
+        {{ form.screenshot }}
+    </div>
+
+    <!-- Screen recording field -->
+    <div class="form-group">
+        {{ form.screen_recording.label }}
+        {{ form.screen_recording }}
+    </div>
+
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
